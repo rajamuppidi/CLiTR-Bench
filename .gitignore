@@ -1,0 +1,64 @@
+# ── Pre-publication / internal research documents ──────────────────────────────
+# Files in the parent research directory — not part of the public benchmark
+../abour.md
+../CLiTR_Bench_Comprehensive_PRD.md
+../CLiTR_Bench_PRD_Independent_Research.docx
+"../CLiTR-Bench_ A Reproducible Benchmark for Clinical LLMs on Temporal, Guideline-Based Preventive Care.pdf"
+../literature_review_and_paper_outline.md
+../literature_review_and_paper_outline.md.resolved
+../walkthrough.md
+../walkthrough.md.resolved
+
+# Manuscript draft — under review, not yet published
+manuscript/
+
+# ── Python ─────────────────────────────────────────────────────────────────────
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Environment / secrets — NEVER commit API keys
+.env
+!.env.example
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Data generation — 25k Synthea raw patient files (too large; regenerate with scripts)
+data_generation/
+
+# Internal research documentation (project notes, PRD, status docs)
+documentation/
+
+# Artifacts and scratch files
+artifacts/
+.gemini/
+
+# Pilot / exploratory experiment results (unnamed timestamp-only files)
+experiments/results_CMS125_csv_guideline_supplied_2026022[45]*.jsonl
+experiments/results_CMS125_csv_zero_shot_base_2026022[45]*.jsonl
+experiments/results_CMS125_csv_zero_shot_cot_*.jsonl
+experiments/results_CMS125_json_guideline_supplied_*.jsonl
+experiments/final_scores_CMS125_csv_guideline_supplied_2026022[45]*.json
+experiments/final_scores_CMS125_csv_zero_shot_base_2026022[45]*.json
+experiments/final_scores_CMS125_csv_zero_shot_cot_*.json
+experiments/final_scores_CMS125_json_guideline_supplied_*.json
+
+# Development test scripts
+test_groq_integration.py
+test_hf.py
+
+# Python virtual environments
+venv/
+env/
+.venv/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo

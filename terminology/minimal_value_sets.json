@@ -1,0 +1,308 @@
+{
+    "CMS125": {
+        "name": "Breast Cancer Screening (BCS-E)",
+        "value_sets": {
+            "Mammography": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "24606-6"
+                },
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "71651007"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "77061"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "77062"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "77063"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "77065"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "77066"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "77067"
+                }
+            ],
+            "Absence of Left Breast": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "Z90.12"
+                }
+            ],
+            "Absence of Right Breast": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "Z90.11"
+                }
+            ],
+            "Bilateral Mastectomy": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-pcs",
+                    "code": "0HTV0ZZ"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "OHTV0ZZ"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "Z90.13"
+                }
+            ],
+            "Unilateral Mastectomy Left": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-pcs",
+                    "code": "0HTU0ZZ"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "OHTU0ZZ"
+                }
+            ],
+            "Unilateral Mastectomy Right": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-pcs",
+                    "code": "0HTT0ZZ"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "OHTT0ZZ"
+                }
+            ],
+            "Unilateral Mastectomy Unspecified": [
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19180"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19200"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19220"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19240"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19303"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19304"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19305"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19306"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "19307"
+                }
+            ]
+        }
+    },
+    "CMS130": {
+        "name": "Colorectal Cancer Screening (COL)",
+        "value_sets": {
+            "Colonoscopy": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "73761001"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "45378"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "44388"
+                }
+            ],
+            "FIT": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "2335-8"
+                },
+                {
+                    "system": "http://loinc.org",
+                    "code": "14564-9"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "82274"
+                }
+            ],
+            "Colorectal Cancer Exclusion": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "C18.9"
+                }
+            ],
+            "Total Colectomy Exclusion": [
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "44150"
+                }
+            ]
+        }
+    },
+    "CMS165": {
+        "name": "Controlling High Blood Pressure (CBP)",
+        "value_sets": {
+            "Qualifying Encounters": [
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "99202"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "99212"
+                },
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "185349003"
+                }
+            ],
+            "Essential Hypertension": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "59621000"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "I10"
+                }
+            ],
+            "Systolic Blood Pressure": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "8480-6"
+                }
+            ],
+            "Diastolic Blood Pressure": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "8462-4"
+                }
+            ],
+            "ESRD Exclusion": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "N18.6"
+                }
+            ],
+            "Pregnancy Exclusion": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "O09.90"
+                }
+            ],
+            "Hospice Exclusion": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "373066001"
+                },
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "428371000124100"
+                }
+            ],
+            "Palliative Care Exclusion": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "103735009"
+                }
+            ],
+            "Frailty Exclusion": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "248279007"
+                },
+                {
+                    "system": "http://loinc.org",
+                    "code": "98181-1"
+                }
+            ],
+            "Advanced Illness Exclusion": [
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "F03.90"
+                },
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "26929004"
+                }
+            ],
+            "Dementia Medications Exclusion": [
+                {
+                    "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                    "code": "198013"
+                }
+            ],
+            "LTC Exclusion": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "160734000"
+                },
+                {
+                    "system": "http://loinc.org",
+                    "code": "71802-3"
+                }
+            ]
+        }
+    },
+    "CMS122": {
+        "name": "Diabetes: Hemoglobin A1c Poor Control",
+        "value_sets": {
+            "Diabetes": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "44054006"
+                },
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "73211009"
+                },
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "E11.9"
+                }
+            ],
+            "HbA1c Test": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "4548-4"
+                },
+                {
+                    "system": "http://loinc.org",
+                    "code": "17856-6"
+                },
+                {
+                    "system": "http://www.ama-assn.org/go/cpt",
+                    "code": "83036"
+                }
+            ]
+        }
+    }
+}

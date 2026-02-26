@@ -1,0 +1,35 @@
+{
+  "GPT-4o (guideline) vs Llama 3.3 70B (guideline)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 32,
+    "b_better_a_worse": 4,
+    "both_correct": 458,
+    "both_incorrect": 6,
+    "chi2_stat": 20.25,
+    "p_value": 7e-06,
+    "significance": "p < 0.001",
+    "winner": "GPT-4o (guideline)"
+  },
+  "GPT-4o (guideline) vs Qwen 3 80B (guideline)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 77,
+    "b_better_a_worse": 3,
+    "both_correct": 413,
+    "both_incorrect": 7,
+    "chi2_stat": 66.6125,
+    "p_value": 0.0,
+    "significance": "p < 0.001",
+    "winner": "GPT-4o (guideline)"
+  },
+  "Llama 3.3 70B (guideline) vs Qwen 3 80B (guideline)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 70,
+    "b_better_a_worse": 24,
+    "both_correct": 392,
+    "both_incorrect": 14,
+    "chi2_stat": 21.5426,
+    "p_value": 3e-06,
+    "significance": "p < 0.001",
+    "winner": "Llama 3.3 70B (guideline)"
+  }
+}

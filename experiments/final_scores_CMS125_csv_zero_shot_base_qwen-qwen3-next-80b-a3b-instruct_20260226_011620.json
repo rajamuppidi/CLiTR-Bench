@@ -1,0 +1,11 @@
+{
+  "Total_Evaluated": 500,
+  "Denominator_Accuracy": 99.8,
+  "Numerator_Accuracy": 43.6,
+  "Overall_Exact_Match_Accuracy": 43.4,
+  "Precision": 33.25,
+  "Recall_Sensitivity": 91.16,
+  "F1_Score": 48.73,
+  "Auditability_Match_Rate": 31.6,
+  "Hallucinated_Evidence_Count": 342
+}
