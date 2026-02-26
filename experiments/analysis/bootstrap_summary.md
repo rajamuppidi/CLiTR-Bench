@@ -11,6 +11,15 @@ All publication-scale experiments (n=499–500 patients).
 | F1 | **96.55%** | 94.16% | 98.5% |
 | Auditability | **98.0%** | 96.6% | 99.2% |
 
+## GPT-4o zeroShot (n=500)
+
+| Metric | Observed | 95% CI Lower | 95% CI Upper |
+|---|---|---|---|
+| Precision | **36.11%** | 30.93% | 41.32% |
+| Recall | **79.59%** | 72.86% | 85.92% |
+| F1 | **49.68%** | 44.06% | 54.95% |
+| Auditability | **52.6%** | 48.2% | 56.8% |
+
 ## Llama 3.3 70B guideSupp (n=500)
 
 | Metric | Observed | 95% CI Lower | 95% CI Upper |

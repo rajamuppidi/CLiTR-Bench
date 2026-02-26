@@ -24,6 +24,31 @@
       }
     }
   },
+  "GPT-4o\nzeroShot": {
+    "n": 500,
+    "metrics": {
+      "precision": {
+        "observed": 36.11,
+        "ci_lower": 30.93,
+        "ci_upper": 41.32
+      },
+      "recall": {
+        "observed": 79.59,
+        "ci_lower": 72.86,
+        "ci_upper": 85.92
+      },
+      "f1": {
+        "observed": 49.68,
+        "ci_lower": 44.06,
+        "ci_upper": 54.95
+      },
+      "auditability": {
+        "observed": 52.6,
+        "ci_lower": 48.2,
+        "ci_upper": 56.8
+      }
+    }
+  },
   "Llama 3.3 70B\nguideSupp": {
     "n": 500,
     "metrics": {

@@ -28,6 +28,8 @@ RANDOM_SEED     = 42
 EXPERIMENT_FILES = {
     "GPT-4o\nguideSupp":
         "results_CMS125_csv_guideline_supplied_openai-gpt-4o_20260226_015346.jsonl",
+    "GPT-4o\nzeroShot":
+        "results_CMS125_csv_zero_shot_base_openai-gpt-4o_20260226_082257.jsonl",
     "Llama 3.3 70B\nguideSupp":
         "results_CMS125_csv_guideline_supplied_meta-llama-llama-3.3-70b-instruct_20260226_005952.jsonl",
     "Qwen 3 80B\nguideSupp":

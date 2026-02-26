@@ -31,5 +31,60 @@
     "p_value": 3e-06,
     "significance": "p < 0.001",
     "winner": "Llama 3.3 70B (guideline)"
+  },
+  "GPT-4o (guideline) vs GPT-4o (zero-shot)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 232,
+    "b_better_a_worse": 5,
+    "both_correct": 258,
+    "both_incorrect": 5,
+    "chi2_stat": 215.5105,
+    "p_value": 0.0,
+    "significance": "p < 0.001",
+    "winner": "GPT-4o (guideline)"
+  },
+  "Llama 3.3 70B (guideline) vs Llama 3.3 70B (zero-shot)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 121,
+    "b_better_a_worse": 8,
+    "both_correct": 341,
+    "both_incorrect": 30,
+    "chi2_stat": 97.2403,
+    "p_value": 0.0,
+    "significance": "p < 0.001",
+    "winner": "Llama 3.3 70B (guideline)"
+  },
+  "Qwen 3 80B (guideline) vs Qwen 3 80B (zero-shot)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 203,
+    "b_better_a_worse": 5,
+    "both_correct": 213,
+    "both_incorrect": 79,
+    "chi2_stat": 186.5817,
+    "p_value": 0.0,
+    "significance": "p < 0.001",
+    "winner": "Qwen 3 80B (guideline)"
+  },
+  "GPT-4o (zero-shot) vs Llama 3.3 70B (zero-shot)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 64,
+    "b_better_a_worse": 150,
+    "both_correct": 199,
+    "both_incorrect": 87,
+    "chi2_stat": 33.7617,
+    "p_value": 0.0,
+    "significance": "p < 0.001",
+    "winner": "Llama 3.3 70B (zero-shot)"
+  },
+  "GPT-4o (zero-shot) vs Qwen 3 80B (zero-shot)": {
+    "shared_patients": 500,
+    "a_better_b_worse": 110,
+    "b_better_a_worse": 65,
+    "both_correct": 153,
+    "both_incorrect": 172,
+    "chi2_stat": 11.0629,
+    "p_value": 0.000881,
+    "significance": "p < 0.001",
+    "winner": "GPT-4o (zero-shot)"
   }
 }
