@@ -1,20 +1,24 @@
 """
-Error Analysis — Qwen 3 80B Zero-Shot Hallucinations on CMS125.
-Analyses the 342 hallucinated evidence citations in the Qwen zero-shot run
+Error Analysis — Zero-Shot Hallucinations on CMS125.
+Analyses non-auditable (hallucinated) evidence citations across zero-shot runs
 to categorise temporal reasoning failure modes.
 
+Models analysed:
+  - Qwen 3 80B (zero-shot)
+  - GPT-4o (zero-shot)
+
 Categories:
-  - OUTSIDE_WINDOW: Cited a mammogram event that exists but is outside the 27-month window
-  - WRONG_CODE: Cited an event with a non-mammography code
-  - FABRICATED: Evidence event doesn't exist in gold truth at all
-  - WRONG_CONCLUSION: Correct evidence cited but compliance decision wrong
+  - OUTSIDE_WINDOW    : Cited a real mammogram but outside the 27-month window
+  - WRONG_CONCLUSION  : Correct evidence date but incorrect compliance decision
+  - NO_EVIDENCE_CITED : Prediction made without citing any evidence
+  - FABRICATED_DETAILS: Evidence details don't parse to a recognisable date
 
 Usage:
     python3 experiments/analysis/error_analysis.py
 
 Output:
-    experiments/analysis/qwen_zero_shot_error_analysis.json
-    experiments/analysis/qwen_zero_shot_error_analysis.md
+    experiments/analysis/<model>_zero_shot_error_analysis.json / .md
+    experiments/analysis/zero_shot_error_comparison.md
 """
 
 import os
@@ -28,7 +32,24 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 EXPERIMENTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ANALYSIS_DIR    = os.path.dirname(os.path.abspath(__file__))
 
-QWEN_ZERO_SHOT_FILE = "results_CMS125_csv_zero_shot_base_qwen-qwen3-next-80b-a3b-instruct_20260226_011620.jsonl"
+MODELS = {
+    "qwen_zero_shot": {
+        "label": "Qwen 3 80B",
+        "file":  "results_CMS125_csv_zero_shot_base_qwen-qwen3-next-80b-a3b-instruct_20260226_011620.jsonl",
+    },
+    "gpt4o_zero_shot": {
+        "label": "GPT-4o",
+        "file":  "results_CMS125_csv_zero_shot_base_openai-gpt-4o_20260226_082257.jsonl",
+    },
+}
+
+DESCRIPTIONS = {
+    "OUTSIDE_WINDOW":     "Cited a real mammogram outside the 27-month window",
+    "FABRICATED_DETAILS": "Cited event details that do not resolve to a recognisable date",
+    "WRONG_CONCLUSION":   "Evidence date parses within the window; compliance decision is still wrong",
+    "FUTURE_DATE":        "Cited a mammogram date after the measurement index date",
+    "NO_EVIDENCE_CITED":  "Compliance prediction made without citing any supporting evidence",
+}
 
 MEASUREMENT_END     = date(2025, 12, 31)
 LOOKBACK_DAYS       = 821   # 27 months
@@ -90,13 +111,12 @@ def classify_hallucination(gold_num, pred_num, gold_ev, llm_ev, audit):
     return "FABRICATED_DETAILS"
 
 
-def main():
-    path = os.path.join(EXPERIMENTS_DIR, QWEN_ZERO_SHOT_FILE)
-    if not os.path.exists(path):
-        logging.error(f"File not found: {path}")
-        return
 
-    logging.info(f"Loading: {QWEN_ZERO_SHOT_FILE}")
+
+def analyse_model(path, label, model_key):
+    """Run error analysis for one model's zero-shot JSONL file."""
+    logging.info(f"\n{'='*60}\nAnalysing: {label}\n{'='*60}")
+
     records = []
     with open(path) as f:
         for line in f:
@@ -107,109 +127,95 @@ def main():
                 except json.JSONDecodeError:
                     pass
 
-    logging.info(f"  Total records: {len(records)}")
-
-    # Parse all records
     parsed_records = [parse_record(r) for r in records]
-    # (pid, gold_num, pred_num, gold_ev, llm_ev, audit)
+    hallucinated   = [(pid, gn, pn, ge, le, a) for pid, gn, pn, ge, le, a in parsed_records if not a]
+    n_hall  = len(hallucinated)
+    n_total = len(records)
 
-    hallucinated = [(pid, gn, pn, ge, le, a) for pid, gn, pn, ge, le, a in parsed_records if not a]
-    correct      = [(pid, gn, pn, ge, le, a) for pid, gn, pn, ge, le, a in parsed_records if a]
+    logging.info(f"  Total: {n_total} | Non-auditable: {n_hall} ({n_hall/n_total*100:.1f}%)")
 
-    logging.info(f"  Non-auditable (hallucinated evidence): {len(hallucinated)}")
-    logging.info(f"  Auditable (correct evidence): {len(correct)}")
-
-    # Classify each hallucination
     error_counts = Counter()
     categorised  = []
-
     for pid, gn, pn, ge, le, a in hallucinated:
         cat = classify_hallucination(gn, pn, ge, le, a)
         error_counts[cat] += 1
-        categorised.append({
-            "patient_id":    pid,
-            "gold_numerator": gn,
-            "llm_numerator":  pn,
-            "error_type":    cat,
-            "llm_evidence":  str(le),
-        })
+        categorised.append({"patient_id": pid, "gold_numerator": gn,
+                            "llm_numerator": pn, "error_type": cat,
+                            "llm_evidence": str(le)})
 
-    # Decision breakdown
-    tp_hall  = sum(1 for _, gn, pn, _, _, _ in hallucinated if gn and pn)
-    fp_hall  = sum(1 for _, gn, pn, _, _, _ in hallucinated if not gn and pn)
-    fn_hall  = sum(1 for _, gn, pn, _, _, _ in hallucinated if gn and not pn)
-    tn_hall  = sum(1 for _, gn, pn, _, _, _ in hallucinated if not gn and not pn)
+    fp_hall = sum(1 for _, gn, pn, _, _, _ in hallucinated if not gn and pn)
+    fn_hall = sum(1 for _, gn, pn, _, _, _ in hallucinated if gn and not pn)
 
-    logging.info("\nError type breakdown:")
+    logging.info("  Error types:")
     for cat, count in error_counts.most_common():
-        logging.info(f"  {cat:30s}: {count:4d} ({count/len(hallucinated)*100:.1f}%)")
+        logging.info(f"    {cat:30s}: {count:4d} ({count/n_hall*100:.1f}%)")
 
-    logging.info(f"\nDecision breakdown within hallucinated cases:")
-    logging.info(f"  True Positive (right call, wrong evidence):  {tp_hall}")
-    logging.info(f"  False Positive (wrong compliant call):       {fp_hall}")
-    logging.info(f"  False Negative (wrong non-compliant call):   {fn_hall}")
-    logging.info(f"  True Negative (right call, wrong evidence):  {tn_hall}")
-
-    # Save JSON
     result = {
-        "model": "Qwen 3 80B",
-        "prompt": "zero_shot_base",
-        "n_total": len(records),
-        "n_hallucinated": len(hallucinated),
-        "hallucination_rate_pct": round(len(hallucinated)/len(records)*100, 2),
+        "model": label, "prompt": "zero_shot_base",
+        "n_total": n_total, "n_hallucinated": n_hall,
+        "hallucination_rate_pct": round(n_hall / n_total * 100, 2),
         "error_type_counts": dict(error_counts.most_common()),
         "decision_breakdown": {
-            "true_positive_with_wrong_evidence": tp_hall,
             "false_positive_wrong_compliant_call": fp_hall,
             "false_negative_wrong_noncompliant_call": fn_hall,
-            "true_negative_with_wrong_evidence": tn_hall,
         },
         "cases": categorised,
     }
 
-    out_json = os.path.join(ANALYSIS_DIR, "qwen_zero_shot_error_analysis.json")
+    out_json = os.path.join(ANALYSIS_DIR, f"{model_key}_error_analysis.json")
     with open(out_json, "w") as f:
         json.dump(result, f, indent=2)
-    logging.info(f"\nSaved: {out_json}")
 
-    # Save Markdown report
-    out_md = os.path.join(ANALYSIS_DIR, "qwen_zero_shot_error_analysis.md")
+    out_md = os.path.join(ANALYSIS_DIR, f"{model_key}_error_analysis.md")
     with open(out_md, "w") as f:
-        f.write("# Qwen 3 80B Zero-Shot Error Analysis — CMS125\n\n")
-        f.write(f"**Total patients:** {len(records)} | ")
-        f.write(f"**Hallucinated evidence:** {len(hallucinated)} ({result['hallucination_rate_pct']}%)\n\n")
+        f.write(f"# {label} Zero-Shot Error Analysis — CMS125\n\n")
+        f.write(f"**Total patients:** {n_total} | **Non-auditable:** {n_hall} ({result['hallucination_rate_pct']}%)\n\n")
         f.write("## Error Type Breakdown\n\n")
-        f.write("| Error Type | Count | % of Hallucinations | Description |\n")
-        f.write("|---|---|---|---|\n")
-        descriptions = {
-            "OUTSIDE_WINDOW":     "Cited a real mammogram event but it's older than 27 months",
-            "FABRICATED_DETAILS": "Cited event details that don't match any gold truth record",
-            "WRONG_CODE":         "Cited a non-mammography event as the compliance evidence",
-            "WRONG_CONCLUSION":   "Correct evidence date but made the wrong compliance decision",
-            "FUTURE_DATE":        "Hallucinated a mammogram date after the index date",
-            "NO_EVIDENCE_CITED":  "No evidence cited despite making a prediction",
-        }
+        f.write("| Error Type | Count | % of Non-auditable | Description |\n|---|---|---|---|\n")
         for cat, count in error_counts.most_common():
-            pct  = round(count / len(hallucinated) * 100, 1)
-            desc = descriptions.get(cat, "—")
+            pct  = round(count / n_hall * 100, 1)
+            desc = DESCRIPTIONS.get(cat, "—")
             f.write(f"| {cat} | {count} | {pct}% | {desc} |\n")
+        f.write(f"\n**False positives (missed care gaps):** {fp_hall}/{n_hall} ({fp_hall/n_hall*100:.1f}%)\n")
+        f.write(f"**False negatives (unnecessary outreach):** {fn_hall}/{n_hall} ({fn_hall/n_hall*100:.1f}%)\n")
 
-        f.write("\n## Decision Analysis Within Hallucinated Cases\n\n")
-        f.write("| Outcome | Count | Implication |\n|---|---|---|\n")
-        f.write(f"| True Positive (correct call, wrong evidence) | {tp_hall} | Model got lucky — right answer, fabricated justification |\n")
-        f.write(f"| False Positive (falsely marked compliant) | {fp_hall} | **Clinically dangerous** — would miss real care gaps |\n")
-        f.write(f"| False Negative (falsely marked non-compliant) | {fn_hall} | Missed true compliance — causes unnecessary outreach |\n")
-        f.write(f"| True Negative (correct call, wrong evidence) | {tn_hall} | Right answer, fabricated justification |\n")
+    logging.info(f"  Saved: {out_json} | {out_md}")
+    return result
 
-        f.write("\n## Key Insight\n\n")
-        f.write("Qwen zero-shot's dominant failure mode under temporal compliance tasks:\n\n")
-        f.write("1. **It finds mammography events** (high recall) but cannot determine if they fall inside the 27-month boundary.\n")
-        f.write("2. The 27-month lookback window (Oct 1, 2023 → Dec 31, 2025) is a non-trivial calculation that requires knowing the exact index date and computing a rolling window — capability that emerges only with guideline injection.\n")
-        f.write("3. Most hallucinations are **OUTSIDE_WINDOW** temporal errors, not fabricated events — the model is reporting real mammograms in the wrong time frame.\n")
 
-    logging.info(f"Saved: {out_md}")
+def main():
+    all_results = {}
+    for model_key, cfg in MODELS.items():
+        path = os.path.join(EXPERIMENTS_DIR, cfg["file"])
+        if not os.path.exists(path):
+            logging.warning(f"File not found: {cfg['file']}")
+            continue
+        all_results[model_key] = analyse_model(path, cfg["label"], model_key)
+
+    # Cross-model comparison
+    out_cmp = os.path.join(ANALYSIS_DIR, "zero_shot_error_comparison.md")
+    with open(out_cmp, "w") as f:
+        f.write("# Zero-Shot Error Comparison — CMS125\n\n")
+        f.write("| Metric | " + " | ".join(r["model"] for r in all_results.values()) + " |\n")
+        f.write("|---|" + "---|" * len(all_results) + "\n")
+        f.write("| N total | " + " | ".join(str(r["n_total"]) for r in all_results.values()) + " |\n")
+        f.write("| Non-auditable | " + " | ".join(f"{r['n_hallucinated']} ({r['hallucination_rate_pct']}%)" for r in all_results.values()) + " |\n")
+        f.write("| False positives | " + " | ".join(str(r["decision_breakdown"]["false_positive_wrong_compliant_call"]) for r in all_results.values()) + " |\n")
+        f.write("| False negatives | " + " | ".join(str(r["decision_breakdown"]["false_negative_wrong_noncompliant_call"]) for r in all_results.values()) + " |\n\n")
+
+        all_cats = sorted(set(k for r in all_results.values() for k in r["error_type_counts"]))
+        f.write("## Error Type Counts\n\n| Error Type | " + " | ".join(r["model"] for r in all_results.values()) + " |\n")
+        f.write("|---|" + "---|" * len(all_results) + "\n")
+        for cat in all_cats:
+            counts = [str(r["error_type_counts"].get(cat, 0)) for r in all_results.values()]
+            f.write(f"| {cat} | " + " | ".join(counts) + " |\n")
+
+    logging.info(f"\nComparison saved: {out_cmp}")
     logging.info("Error analysis complete.")
 
 
 if __name__ == "__main__":
     main()
+
+
+

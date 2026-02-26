@@ -10,10 +10,8 @@
     "OUTSIDE_WINDOW": 7
   },
   "decision_breakdown": {
-    "true_positive_with_wrong_evidence": 0,
     "false_positive_wrong_compliant_call": 269,
-    "false_negative_wrong_noncompliant_call": 13,
-    "true_negative_with_wrong_evidence": 0
+    "false_negative_wrong_noncompliant_call": 13
   },
   "cases": [
     {
