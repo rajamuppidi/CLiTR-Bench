@@ -1,18 +1,3 @@
-# ── Pre-publication / internal research documents ──────────────────────────────
-# Files in the parent research directory — not part of the public benchmark
-../abour.md
-../CLiTR_Bench_Comprehensive_PRD.md
-../CLiTR_Bench_PRD_Independent_Research.docx
-"../CLiTR-Bench_ A Reproducible Benchmark for Clinical LLMs on Temporal, Guideline-Based Preventive Care.pdf"
-../literature_review_and_paper_outline.md
-../literature_review_and_paper_outline.md.resolved
-../walkthrough.md
-../walkthrough.md.resolved
-
-# Manuscript draft — under review, not yet published
-manuscript/
-
-# ── Python ─────────────────────────────────────────────────────────────────────
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -21,7 +6,8 @@ __pycache__/
 
 # Environment / secrets — NEVER commit API keys
 .env
-!.env.example
+.env.*
+*.env
 
 # macOS
 .DS_Store
@@ -31,12 +17,17 @@ __pycache__/
 # Data generation — 25k Synthea raw patient files (too large; regenerate with scripts)
 data_generation/
 
+output/
+manuscript/
+
 # Internal research documentation (project notes, PRD, status docs)
 documentation/
 
 # Artifacts and scratch files
 artifacts/
 .gemini/
+
+
 
 # Pilot / exploratory experiment results (unnamed timestamp-only files)
 experiments/results_CMS125_csv_guideline_supplied_2026022[45]*.jsonl

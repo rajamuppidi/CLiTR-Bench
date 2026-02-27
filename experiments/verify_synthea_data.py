@@ -190,7 +190,7 @@ def main():
     # --- CMS125 compliance rate ---
     if len(denominator) > 0:
         compliance_rate = len(numerator) / len(denominator) * 100
-        print(f"\n  ✅ CMS125 Compliance Rate: {compliance_rate:.1f}%")
+        print(f"\n   CMS125 Compliance Rate: {compliance_rate:.1f}%")
     
     # --- Balanced cohort feasibility ---
     print(f"\n[Step 5] Balanced Cohort Feasibility (100-patient target):")
@@ -203,15 +203,15 @@ def main():
                 len(non_compliant_denom) >= target_num_no and 
                 len(initial_population) - len(denominator) + len(all_excluded) >= target_denom_no)
     
-    print(f"  Need {target_num_yes} Numerator YES  → Available: {len(numerator):,}  {'✅ OK' if len(numerator) >= target_num_yes else '❌ INSUFFICIENT'}")
-    print(f"  Need {target_num_no} Numerator NO   → Available: {len(non_compliant_denom):,}  {'✅ OK' if len(non_compliant_denom) >= target_num_no else '❌ INSUFFICIENT'}")
+    print(f"  Need {target_num_yes} Numerator YES  → Available: {len(numerator):,}  {' OK' if len(numerator) >= target_num_yes else ' INSUFFICIENT'}")
+    print(f"  Need {target_num_no} Numerator NO   → Available: {len(non_compliant_denom):,}  {' OK' if len(non_compliant_denom) >= target_num_no else ' INSUFFICIENT'}")
     denom_no_pool = len(eligible_age_patients) - len(initial_population)
-    print(f"  Need {target_denom_no} Denominator NO → Available: {denom_no_pool:,} (age-eligible but no 2025 visit)  {'✅ OK' if denom_no_pool >= target_denom_no else '❌ INSUFFICIENT'}")
+    print(f"  Need {target_denom_no} Denominator NO → Available: {denom_no_pool:,} (age-eligible but no 2025 visit)  {' OK' if denom_no_pool >= target_denom_no else ' INSUFFICIENT'}")
     
     if feasible:
-        print(f"\n  ✅ Balanced 100-patient cohort is FEASIBLE with existing Synthea data.")
+        print(f"\n   Balanced 100-patient cohort is FEASIBLE with existing Synthea data.")
     else:
-        print(f"\n  ⚠️  Balanced cohort may require adjustment — check insufficient groups above.")
+        print(f"\n    Balanced cohort may require adjustment — check insufficient groups above.")
 
     # --- Code frequency ---
     print(f"\n[Step 6] Most Frequent CMS125 Codes Found:")
