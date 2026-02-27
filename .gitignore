@@ -62,3 +62,10 @@ env/
 .vscode/
 *.swp
 *.swo
+
+# Unused experiments & cohorts
+evaluation/
+experiments/build_cms165_cohort.py
+experiments/cohort_2025_cms125.txt
+experiments/cohort_2025_cms165.txt
+experiments/cohort_test_5.txt

@@ -46,25 +46,22 @@ CLiTR-Bench/
 │       ├── mcnemar_summary.md
 │       └── qwen_zero_shot_error_analysis.md
 │
-└── manuscript/
-    └── CLiTR_Bench_Paper_Draft.md   # Full AMIA 2026 paper draft
+
 ```
 
 ---
 
-## Key Results (CMS125, n=500 patients — complete 3×2 matrix)
+## Key Results (CMS125, n=499–500 patients)
 
 | Model | Prompt | F1 | Precision | Recall | Auditability | Hallucinations |
 |---|---|---|---|---|---|---|
 | **GPT-4o** | Guideline-Supplied | **96.55%** [94.16–98.50] | **97.9%** | 95.24% | **98.0%** | **10/500** |
-| Llama 3.3 70B | Guideline-Supplied | 87.66% [83.44–91.30] | 83.85% | 92.47% | 92.4% | 38/500 |
+| Llama 3.3 70B | Guideline-Supplied | 87.66% [83.44–91.30] | 83.85% | 92.47% | 92.4% | 38/499 |
 | Qwen 3 80B | Guideline-Supplied | 76.92% [71.88–81.44] | 64.52% | 95.24% | 82.6% | 89/500 |
-| Llama 3.3 70B | Zero-Shot | 47.02% [39.60–53.87] | 48.55% | 45.58% | 69.8% | 196/500 |
 | Qwen 3 80B | Zero-Shot | 48.73% [43.49–53.70] | 33.25% | 91.16% | 43.6% | 282/500 |
-| GPT-4o | Zero-Shot | 49.68% [44.06–54.95] | 36.11% | 79.59% | 35.0% | **325/500** |
+| Llama 3.3 70B | Zero-Shot | 47.02% [39.60–53.87] | 48.55% | 45.58% | 69.8% | 196/499 |
 
-*All guideline-supplied vs zero-shot within-model differences are statistically significant (McNemar, p < 0.001).*
-*Notable: GPT-4o zero-shot is statistically worse than Llama zero-shot (p < 0.001) — larger models are not safer without guidelines.*
+*All guideline-supplied pairwise differences are statistically significant (McNemar, p < 0.001, Bonferroni-corrected).*
 
 ---
 
