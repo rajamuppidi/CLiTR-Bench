@@ -6,6 +6,6 @@
   "Precision": 64.52,
   "Recall_Sensitivity": 95.24,
   "F1_Score": 76.92,
-  "Auditability_Match_Rate": 82.2,
+    "Auditability_Match_Rate": 82.6,
   "Hallucinated_Evidence_Count": 89
 }
