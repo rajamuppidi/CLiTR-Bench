@@ -24,7 +24,7 @@ TERMINOLOGY_PATH = os.path.join(TARGET_DIR, "terminology", "minimal_value_sets.j
 
 MEASUREMENT_YEAR_END = date(2025, 12, 31)
 MEASUREMENT_YEAR_START = date(2025, 1, 1)
-MAMMOGRAPHY_WINDOW_START = date(2023, 10, 1)  # 27 months before Dec 31, 2025
+MAMMOGRAPHY_WINDOW_START = date(2023, 9, 30)  # 27 months before Dec 31, 2025 (correct: Sept 30, 2023)
 
 
 def parse_date(d_str):
