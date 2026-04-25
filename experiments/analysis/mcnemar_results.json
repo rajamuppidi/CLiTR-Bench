@@ -1,4 +1,5 @@
 {
+  "_note": "McNemar tests run on the full 500-patient cohort. For Llama comparisons, one patient record was missing from the raw Llama output files; that patient is counted as both-incorrect in pairwise comparisons involving Llama.",
   "GPT-4o (guideline) vs Llama 3.3 70B (guideline)": {
     "shared_patients": 500,
     "a_better_b_worse": 32,
