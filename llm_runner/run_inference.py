@@ -82,10 +82,43 @@ class LLMRunner:
                 prompts = data.get('prompts', {})
         return prompts
 
-    def _call_llm_api(self, system_prompt: str, user_prompt: str) -> str:
+    @staticmethod
+    def _is_degenerate(text: str) -> bool:
+        """
+        Detects degenerate model output that can never parse as the expected JSON:
+        empty/whitespace, a single character repeated (the backslash-loop failure mode),
+        or text containing no JSON object at all.
+        """
+        stripped = (text or "").strip()
+        if not stripped:
+            return True
+        if "{" not in stripped:
+            return True
+        # Single character (or tiny set) repeated thousands of times -> repetition loop.
+        if len(stripped) > 100 and len(set(stripped)) <= 2:
+            return True
+        return False
+
+    def _clean_response(self, raw_response: str) -> str:
+        """Strips markdown fences and R1 <think> blocks so the payload can be json.loads'd."""
+        import re
+        clean_response = (raw_response or "").strip()
+        clean_response = re.sub(r'<think>.*?</think>', '', clean_response, flags=re.DOTALL).strip()
+        if "```json" in clean_response:
+            clean_response = clean_response.split("```json")[-1].split("```")[0].strip()
+        elif clean_response.startswith("```"):
+            lines = clean_response.split('\n')
+            if lines[0].startswith("```"): lines = lines[1:]
+            if lines and lines[-1].startswith("```"): lines = lines[:-1]
+            clean_response = "\n".join(lines).strip()
+        return clean_response
+
+    def _call_llm_api(self, system_prompt: str, user_prompt: str, temperature: float = None) -> str:
         """
         Routes inference payload to the dynamically selected foundation model.
+        `temperature` overrides the instance default (used to nudge retries off a bad path).
         """
+        temp = self.temperature if temperature is None else temperature
         if self.client and self.provider != "gemini":  # OpenAI-compatible providers only
             # Call actual API endpoint
             max_retries = 3
@@ -98,7 +131,7 @@ class LLMRunner:
                             {"role": "system", "content": system_prompt},
                             {"role": "user", "content": user_prompt}
                         ],
-                        "temperature": self.temperature,
+                        "temperature": temp,
                     }
 
                     # Provider-specific configurations
@@ -114,8 +147,24 @@ class LLMRunner:
                     elif self.provider == "openrouter":
                         # OpenRouter: Ban Venice (BYOK required on free tier)
                         kwargs["extra_body"] = {"provider": {"ignore": ["Venice", "venice"]}}
+                        # Cap output: the answer JSON is tiny. Without a cap, some models
+                        # (e.g. Llama-3.3-70B at temp 0) fall into a degenerate repetition
+                        # loop and emit 65,536 junk chars before stopping.
+                        kwargs["max_tokens"] = 2048
+                        # Ask for strict JSON, mirroring the OpenAI path. Most OpenRouter
+                        # models (incl. Llama 3.3) honor this; we fall back if a model rejects it.
+                        kwargs["response_format"] = {"type": "json_object"}
 
-                    response = self.client.chat.completions.create(**kwargs)
+                    try:
+                        response = self.client.chat.completions.create(**kwargs)
+                    except Exception as e:
+                        # Some models reject response_format; retry once without it before bubbling up.
+                        if self.provider == "openrouter" and "response_format" in kwargs:
+                            print(f"response_format rejected ({e}); retrying without it.")
+                            kwargs.pop("response_format", None)
+                            response = self.client.chat.completions.create(**kwargs)
+                        else:
+                            raise
                     return response.choices[0].message.content
 
                 except Exception as e:
@@ -139,7 +188,7 @@ class LLMRunner:
                         contents=full_prompt,
                         config=genai_types.GenerateContentConfig(
                             response_mime_type="application/json",
-                            temperature=self.temperature,
+                            temperature=temp,
                         )
                     )
                     return response.text
@@ -207,38 +256,49 @@ class LLMRunner:
         # In a real environment, we'd have a system prompt instructing the model to act as the JSON evaluator
         system_msg = "You are a Clinical Intelligence system returning only parseable JSON."
         
-        # Dispatch to the model inference layer
-        raw_response = self._call_llm_api(system_prompt=system_msg, user_prompt=prompt)
+        # Dispatch to the model with retries. Some models (e.g. Llama-3.3-70B at temp 0)
+        # fall into a degenerate repetition loop and return junk that never parses. On any
+        # degenerate/unparseable response we retry, nudging temperature up and reinforcing
+        # the JSON instruction — a different sampling path almost always breaks the loop.
+        max_parse_attempts = 4
+        last_error = ""
+        raw_response = ""
+        for attempt in range(max_parse_attempts):
+            retry_temp = None if attempt == 0 else min(0.3 + 0.1 * attempt, 0.7)
+            user_prompt = prompt if attempt == 0 else prompt + "\n\nReturn ONLY a single compact JSON object."
+            raw_response = self._call_llm_api(
+                system_prompt=system_msg, user_prompt=user_prompt, temperature=retry_temp
+            )
 
-        
-        # Attempt to parse json
-        try:
-            # DeepSeek R1 and Free models sometimes output markdown wrappers like ```json
-            import re
-            clean_response = raw_response.strip()
-            # Remove <think>...</think> blocks from R1
-            clean_response = re.sub(r'<think>.*?</think>', '', clean_response, flags=re.DOTALL).strip()
-            
-            if "```json" in clean_response:
-                clean_response = clean_response.split("```json")[-1].split("```")[0].strip()
-            elif clean_response.startswith("```"):
-                lines = clean_response.split('\n')
-                if lines[0].startswith("```"): lines = lines[1:]
-                if lines[-1].startswith("```"): lines = lines[:-1]
-                clean_response = "\n".join(lines).strip()
-                
-            parsed = json.loads(clean_response)
-            return {
-                "success": True,
-                "raw_output": raw_response,
-                "parsed": parsed
-            }
-        except Exception as e:
-            return {
-                "success": False,
-                "raw_output": raw_response,
-                "error": f"Failed to parse LLM valid JSON: {str(e)}"
-            }
+            if self._is_degenerate(raw_response):
+                last_error = "degenerate_repetition (no parseable JSON in model output)"
+                print(f"  Degenerate output on attempt {attempt+1}/{max_parse_attempts}; retrying...")
+                continue
+
+            try:
+                parsed = json.loads(self._clean_response(raw_response))
+                # API failures are surfaced as {"error": ...} by _call_llm_api. That parses as
+                # valid JSON, so guard against silently recording an error as a real prediction.
+                if isinstance(parsed, dict) and "error" in parsed and "denominator_met" not in parsed:
+                    last_error = f"api_error: {str(parsed['error'])[:200]}"
+                    print(f"  API-error payload on attempt {attempt+1}/{max_parse_attempts}; retrying...")
+                    continue
+                return {
+                    "success": True,
+                    "raw_output": raw_response,
+                    "parsed": parsed
+                }
+            except Exception as e:
+                last_error = f"json_parse_error: {str(e)}"
+                print(f"  Parse failed on attempt {attempt+1}/{max_parse_attempts}: {e}; retrying...")
+                continue
+
+        # Exhausted all attempts — record an explicit, auditable failure.
+        return {
+            "success": False,
+            "raw_output": raw_response,
+            "error": f"Failed to parse LLM valid JSON after {max_parse_attempts} attempts: {last_error}"
+        }
 
 if __name__ == "__main__":
     runner = LLMRunner()

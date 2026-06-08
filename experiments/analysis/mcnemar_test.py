@@ -25,31 +25,31 @@ ANALYSIS_DIR    = os.path.dirname(os.path.abspath(__file__))
 
 EXPERIMENT_FILES = {
     "GPT-4o (guideline)":
-        "results_CMS125_csv_guideline_supplied_openai-gpt-4o_20260226_015346.jsonl",
+        "results_CMS125_csv_guideline_supplied_openai-gpt-4o_20260604_221440.jsonl",
     "GPT-4o (zero-shot)":
-        "results_CMS125_csv_zero_shot_base_openai-gpt-4o_20260226_082257.jsonl",
+        "results_CMS125_csv_zero_shot_base_openai-gpt-4o_20260605_103217.jsonl",
+    "Claude Sonnet 4.6 (guideline)":
+        "results_CMS125_csv_guideline_supplied_anthropic-claude-sonnet-4.6_20260605_135639.jsonl",
+    "Claude Sonnet 4.6 (zero-shot)":
+        "results_CMS125_csv_zero_shot_base_anthropic-claude-sonnet-4.6_20260605_113755.jsonl",
     "Llama 3.3 70B (guideline)":
-        "results_CMS125_csv_guideline_supplied_meta-llama-llama-3.3-70b-instruct_20260226_005952.jsonl",
-    "Qwen 3 80B (guideline)":
-        "results_CMS125_csv_guideline_supplied_qwen-qwen3-next-80b-a3b-instruct_20260226_011631.jsonl",
+        "results_CMS125_csv_guideline_supplied_meta-llama-llama-3.3-70b-instruct_20260605_163208.jsonl",
     "Llama 3.3 70B (zero-shot)":
-        "results_CMS125_csv_zero_shot_base_llama-3.3-70b_20260226_002453.jsonl",
-    "Qwen 3 80B (zero-shot)":
-        "results_CMS125_csv_zero_shot_base_qwen-qwen3-next-80b-a3b-instruct_20260226_011620.jsonl",
+        "results_CMS125_csv_zero_shot_base_meta-llama-llama-3.3-70b-instruct_20260605_154816.jsonl",
 }
 
 COMPARISONS = [
     # Guideline-supplied: model vs model
+    ("GPT-4o (guideline)", "Claude Sonnet 4.6 (guideline)"),
     ("GPT-4o (guideline)", "Llama 3.3 70B (guideline)"),
-    ("GPT-4o (guideline)", "Qwen 3 80B (guideline)"),
-    ("Llama 3.3 70B (guideline)", "Qwen 3 80B (guideline)"),
+    ("Claude Sonnet 4.6 (guideline)", "Llama 3.3 70B (guideline)"),
     # Prompt effect: guideline vs zero-shot (within model)
     ("GPT-4o (guideline)", "GPT-4o (zero-shot)"),
+    ("Claude Sonnet 4.6 (guideline)", "Claude Sonnet 4.6 (zero-shot)"),
     ("Llama 3.3 70B (guideline)", "Llama 3.3 70B (zero-shot)"),
-    ("Qwen 3 80B (guideline)", "Qwen 3 80B (zero-shot)"),
     # Zero-shot: model vs model
-    ("GPT-4o (zero-shot)", "Llama 3.3 70B (zero-shot)"),
-    ("GPT-4o (zero-shot)", "Qwen 3 80B (zero-shot)"),
+    ("Claude Sonnet 4.6 (zero-shot)", "GPT-4o (zero-shot)"),
+    ("Claude Sonnet 4.6 (zero-shot)", "Llama 3.3 70B (zero-shot)"),
 ]
 
 

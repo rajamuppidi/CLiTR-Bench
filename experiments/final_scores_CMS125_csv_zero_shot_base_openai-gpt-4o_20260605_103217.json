@@ -1,0 +1,15 @@
+{
+  "Total_Attempted": 500,
+  "Total_Evaluated": 500,
+  "Parse_Failures": 0,
+  "Format_Compliance_Rate": 100.0,
+  "Numerator_Accuracy": 50.8,
+  "Precision": 34.67,
+  "Recall_Sensitivity": 76.19,
+  "F1_Score": 47.66,
+  "Overall_Exact_Match_Accuracy": 50.8,
+  "Denominator_Accuracy": 100.0,
+  "Denominator_Note": "Cohort is 100% denominator-positive; this metric is non-discriminative (a model that always answers True scores 100). Lead with Numerator/F1.",
+  "Auditability_Match_Rate": 34.4,
+  "Hallucinated_Evidence_Count": 328
+}

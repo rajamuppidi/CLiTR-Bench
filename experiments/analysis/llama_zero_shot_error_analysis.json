@@ -1,0 +1,1054 @@
+{
+  "model": "Llama 3.3 70B",
+  "prompt": "zero_shot_base",
+  "n_total": 500,
+  "n_hallucinated": 148,
+  "hallucination_rate_pct": 29.6,
+  "error_type_counts": {
+    "NO_EVIDENCE_CITED": 76,
+    "WRONG_CONCLUSION": 59,
+    "OUTSIDE_WINDOW": 13
+  },
+  "decision_breakdown": {
+    "false_positive_wrong_compliant_call": 72,
+    "false_negative_wrong_noncompliant_call": 76
+  },
+  "cases": [
+    {
+      "patient_id": "587ca872-8e02-803b-9887-4206c42b9a99",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "65a2b223-f26f-622d-65e7-c4ddc1965fd3",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "7bce1a05-0579-9d09-5f7a-a0ece30fe2b5",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e41f48dc-40ac-b982-bfe7-019a5e5739df",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "631350b8-cd06-4b8a-aa43-140b8e14c4df",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "4493bb78-bc91-3bad-a24e-8e43f3b7b5c5",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "bdaed31b-64ec-3c49-f956-041e95ea0dae",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "0859b991-90fb-5e6e-b62b-763ab32f259a",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "fef4828b-0994-2a83-3fea-967edb8867ab",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-07-10, Mammography (http://snomed.info/sct, 46706006)"
+    },
+    {
+      "patient_id": "7a2bcd91-0a09-5dd1-e00a-914f86a28c42",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "251339e2-fee7-4945-6a87-ed2d0f53b5ec",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-06-27, PROCEDURE, http://snomed.info/sct, 76601001 is not found but 710824005 and 710841007 are found which are related to mammography, Date: 2025-06-27"
+    },
+    {
+      "patient_id": "43693757-4cf3-b84b-3125-bc1bc1e623ab",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-04-20, PROCEDURE, http://snomed.info/sct, 430193006, N/A"
+    },
+    {
+      "patient_id": "03d7548f-5414-a9de-1c86-4f220eb595c1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "d99b5ed4-2cb4-777c-6f84-c0fc3592dbd2",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-02-12, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "d5f6846a-52dd-fa2e-ed66-efee7f288f83",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-02-08, PROCEDURE, http://snomed.info/sct, 710824005, Mammography (procedure)"
+    },
+    {
+      "patient_id": "7401f828-32ec-a21a-edf8-21add18b4336",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2020-03-07, PROCEDURE, http://snomed.info/sct, 76601001, N/A"
+    },
+    {
+      "patient_id": "047c50a4-424b-c8ad-919f-fbf6e50c83b2",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-08-27, PROCEDURE, http://snomed.info/sct, 73761001"
+    },
+    {
+      "patient_id": "f1ff893a-bd41-0544-1a86-545659117dd2",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-06-06, PROCEDURE, http://snomed.info/sct, 866148006, N/A (Mammography)"
+    },
+    {
+      "patient_id": "5f7c6089-d13c-f56f-83b9-4ea14cda5c60",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-06-29, PROCEDURE, http://snomed.info/sct, 713106006, N/A"
+    },
+    {
+      "patient_id": "0cd071aa-fe48-ad89-a884-e2aa97c31163",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "d8320514-d853-eea9-ad5b-7d632ecbc64b",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-01-30, 73761001: Mammography (procedure)"
+    },
+    {
+      "patient_id": "572d4acf-3f1a-108c-a851-21f662e3a76e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-07-26, PROCEDURE, http://snomed.info/sct, 52052004, N/A"
+    },
+    {
+      "patient_id": "f51a613e-61bf-c1ca-a261-8de9a9aef631",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "3d8a60f8-39a6-a510-fc35-e3d97a5c0ce8",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "658c4646-27b4-131c-179a-58abfde81bfa",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "4bf7f761-e1e8-ee3e-df4d-0ca2b03133c2",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "0767ddeb-6e9f-51d8-4123-77c88e072b3e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-08-19, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "eadf28b6-ba3a-6f8f-2de9-57ce4aa9d03f",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-04-07, 73761001 (Mammography)"
+    },
+    {
+      "patient_id": "92fc78ca-19be-2186-b3e6-b1a8be5e0b81",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "4dc522cd-ab0c-0db1-37e5-c3365351810f",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-07-18, PROCEDURE, http://snomed.info/sct, 713106006, N/A"
+    },
+    {
+      "patient_id": "dca10319-7253-b1fa-0e6e-0eedfb68af4c",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e2d6a8cd-d295-da62-bfb4-dd9b2766c933",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-10-11, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "f49d6996-83ed-3dca-a029-5e306eac5234",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "276393b1-1a5c-f8ba-c970-d7d1c8e743c0",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "879d894d-0483-85d1-0c3d-27d191a30328",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2023-12-15, PROCEDURE, http://snomed.info/sct, 866148006, N/A"
+    },
+    {
+      "patient_id": "da3574f7-c2ff-2101-00cb-b79d9bfc47d6",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "b0d6f074-e82a-7c3b-b10b-dbcfbabf83a3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-08-26, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "8c68c90b-19e7-6a45-38ea-0f303ffe28b1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "27e4d420-fe69-312c-4a93-ade586815925",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "1a9e91a4-1e1c-1d10-8fed-8e3987424bee",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-11-07, PROCEDURE, http://snomed.info/sct, 710824005"
+    },
+    {
+      "patient_id": "1cb4628b-8891-9bdb-5290-c961f7d8a70b",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-10-10, PROCEDURE, http://snomed.info/sct, 866148006, N/A"
+    },
+    {
+      "patient_id": "eef30914-fb9b-ace1-6598-2d5299af8f26",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-06-28, PROCEDURE, http://snomed.info/sct, 73761001, N/A (Mammography)"
+    },
+    {
+      "patient_id": "be0e9cf2-ecd7-eb4a-05e9-9d5ad7e1e580",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e39932a6-f53f-5645-bd7d-d4036296d770",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-04-13, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "c1f92ed6-262d-0247-b636-4e70cbb215e3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-05-02, PROCEDURE, http://snomed.info/sct, 710824005, N/A (Mammography)"
+    },
+    {
+      "patient_id": "ac2ff4b7-b17a-6dad-f3e8-087931836239",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-02-25, http://snomed.info/sct, 710824005"
+    },
+    {
+      "patient_id": "a0153e46-e767-ba3a-b106-a23c841b6a8e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-09-10, PROCEDURE, http://snomed.info/sct, 866148006, N/A"
+    },
+    {
+      "patient_id": "bb4f7757-84ed-800a-cf00-1a82a4af7585",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "5c46dd6e-1d04-e993-03c4-745d230988d3",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "2402d4ab-3183-fec3-b84d-3f8ae6eedb08",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "121de117-e79d-1d3c-cbe8-55bcab8fd862",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "8cf52582-4a36-4e90-e9b7-846ee0e3d1b5",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "f28a8433-3c74-eda1-897a-3ca2f70f1f04",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-01-14, PROCEDURE, http://snomed.info/sct, 430193006, N/A"
+    },
+    {
+      "patient_id": "9981e415-5c63-0245-ee87-9373a726c156",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "0ac1199d-6eb0-5405-f6ab-765cfc59015b",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-03-17, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "ff9a6465-cbf0-e8f9-dada-93e4c0b8fb9c",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "9af3a52c-a787-b40c-12c1-fc9dc3c26364",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "7ff7f64f-35e9-408f-081f-ddbb3e06539d",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e8af3b3b-7eb2-8ba3-f06a-452fc12db4be",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-11-24, Mammography (Code: 103750000)"
+    },
+    {
+      "patient_id": "b878d68a-421b-aff6-bdc9-819ba9a4b5e1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "0b43baa5-b80a-b55e-f616-4a7284adaaa6",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-02-26, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "6b9835ae-6974-f0a7-7460-340e4612d06c",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-07-19, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "c4a46a5a-7287-574a-9f60-0b02465e1047",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "be2e7905-f87d-3468-6ebd-ad76ad172545",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-09-15, PROCEDURE, http://www.ada.org/cdt, D2331"
+    },
+    {
+      "patient_id": "be4f401d-f505-8fb3-787f-140d43f30804",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-07-14, PROCEDURE, http://snomed.info/sct, 710824005, N/A (Mammography)"
+    },
+    {
+      "patient_id": "60214de1-13d5-a5f3-1ca9-1051024dc0bb",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "04989368-947d-eded-46dd-0b2a51e74cb1",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-12-10, PROCEDURE, http://snomed.info/sct, 711446003, N/A - Mammography (CMS125 measure)"
+    },
+    {
+      "patient_id": "79319e75-0fac-e620-3d72-4076ca4ebee3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-04-21, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "0a5c6e75-3231-62af-1f6a-8d49440ebe01",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-05-30, PROCEDURE, http://snomed.info/sct, 715252007, N/A"
+    },
+    {
+      "patient_id": "5d44d797-419f-21f3-1ed5-95dc8b07a8d3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-03-17, PROCEDURE, http://snomed.info/sct, 306706006, N/A"
+    },
+    {
+      "patient_id": "9faee9c2-6f09-a760-f963-5f97e590cc22",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-04-13, PROCEDURE, http://snomed.info/sct, 19490002, N/A (Mammography)"
+    },
+    {
+      "patient_id": "85d2dc41-feb6-7216-2bf9-e4a69ea4f9cc",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "51eef10e-987a-57e5-2496-5017cdef5ccb",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-01-24, PROCEDURE, http://snomed.info/sct, 65200003, N/A"
+    },
+    {
+      "patient_id": "85f9918a-d934-92f4-c93d-94ae49889461",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-10-25, PROCEDURE, http://www.ada.org/cdt, D0603, N/A"
+    },
+    {
+      "patient_id": "92c52a4d-c1a6-fae4-c0ed-62f8eed2e432",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-06-12, PROCEDURE, http://www.ada.org/cdt, D0145"
+    },
+    {
+      "patient_id": "494b37c8-a770-2eba-b49b-841c4cdd879b",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2022-04-24, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "e4996100-886f-cff2-8c78-31de115d1de4",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "fe77a033-b5d6-e798-dffe-0f836e0cd758",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-12-14, PROCEDURE, http://snomed.info/sct, 29303009, N/A"
+    },
+    {
+      "patient_id": "777a54b4-34c9-2186-46e0-4b71b849f457",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "4cdee0af-89f5-e9aa-7f47-d5cbc72bac54",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "354fbb23-68d2-d5ea-624e-ce668d067e25",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "0c2268a9-6101-9884-ef70-1fd3f98df2d2",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-05-24, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "f27470ba-8e49-15c4-2fe5-d431ca2f657a",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-08-14, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "c550a76e-6713-c141-ca32-1fcba0001312",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-08-10, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "d50b1fa4-c09b-de89-337a-fa78da3a6856",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "ba685f82-c4a3-1c37-37e5-b61b34fd3509",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-10-09, PROCEDURE, http://snomed.info/sct, 711446003, N/A"
+    },
+    {
+      "patient_id": "a888d100-8709-44cd-e033-80b2aeaf13ec",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-04-18, Mammography (procedure code: 710824005)"
+    },
+    {
+      "patient_id": "44ce1361-b1cd-3f50-ac7b-90a75d4f12ec",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-10-27, PROCEDURE, http://snomed.info/sct, 710841007, N/A (Mammography)"
+    },
+    {
+      "patient_id": "6b66f817-bf28-faee-8448-dccf1bba8955",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "b3ea6b13-a0a1-dede-7f06-bb02906168b1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e868265a-5e0b-ef74-40fd-879014fd9590",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-03-12, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "75649bdd-5eaf-a46c-b9b2-1d9065701861",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "2f51d13f-3bd4-57ba-7088-f7968a93d686",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-02-02, PROCEDURE, http://www.ada.org/cdt, D7140"
+    },
+    {
+      "patient_id": "66817172-1621-a6ee-2a40-e48f7678e111",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-06-12, PROCEDURE, http://snomed.info/sct, 866148006, N/A"
+    },
+    {
+      "patient_id": "d0486c8c-5872-065c-5e0a-98add6d7b801",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-03-08, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "28ad3fb9-60de-00f8-80a4-5b1d734ae971",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "fb67e3d7-e469-ab5c-3648-933ce482c5e3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2021-03-16, PROCEDURE, http://snomed.info/sct, 65200003, N/A"
+    },
+    {
+      "patient_id": "c10b9550-9cf4-06ed-3af4-a5f99f41c9c6",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "04c14f0b-b3c0-e62f-c9d9-04684d26875a",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "f960dbd0-e46e-2ffb-0ddd-a11ff83a7e19",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-03-24, PROCEDURE, http://snomed.info/sct, 715252007, N/A"
+    },
+    {
+      "patient_id": "659492d6-9999-4491-be23-0c746c301a8b",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "cff2607d-906b-bcec-af3f-3dbb1637d360",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-07-21, PROCEDURE, http://snomed.info/sct, 73761001"
+    },
+    {
+      "patient_id": "f56dc2ea-33b8-6efb-dfaa-50c1858fbfa2",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-05-27, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "d76c57fb-5292-b62d-92a1-311ddcadf90f",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "cb73385b-3986-428a-a353-d1f9c3493bac",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "c5578545-b21f-655e-f10c-0ee0e9e5a861",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-04-04, PROCEDURE, http://snomed.info/sct, 710824005"
+    },
+    {
+      "patient_id": "c33728bc-625c-7276-0959-dbf47797438b",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "9b20e3f8-e2e1-9b14-6ef0-5d2bf88bb9bb",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "a32ea03e-7a4d-3fb7-6b2f-3f65bd97203b",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-01-04, PROCEDURE, http://snomed.info/sct, 1225002, N/A"
+    },
+    {
+      "patient_id": "cea4b67e-eb79-1d47-0f3b-b1e8946475ee",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-06-15, PROCEDURE, http://snomed.info/sct, 430193006, N/A"
+    },
+    {
+      "patient_id": "8406e89d-a91a-8274-c110-c8a920fec718",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2023-04-02, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "647b57e9-629f-6e19-6955-b4eed9b8dab7",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-11-09, PROCEDURE, http://snomed.info/sct, 73761001, N/A"
+    },
+    {
+      "patient_id": "628906b1-1792-54cf-cf4c-caff6211bea3",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "774e35ba-75bf-e4d4-7469-90b7498724e4",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e0972fbe-4983-52db-13b8-46ea6b2146e7",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "47c61a9d-cbcb-139a-6376-2904747c873c",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-04-10, PROCEDURE, http://www.ada.org/cdt, D5820, N/A"
+    },
+    {
+      "patient_id": "4f730a42-26b2-2382-0863-e4e8ce1eccb0",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "8a6acf95-c060-206c-709d-1bb78e270573",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "25abfe79-4705-75c4-b53e-70d6536132b6",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "e895de9f-3795-877c-ab45-a7861cda33fd",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-10-11, PROCEDURE, http://snomed.info/sct, 710824005, N/A"
+    },
+    {
+      "patient_id": "57fcb64a-7765-7acf-94f4-80ce21ce902e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-09-24, PROCEDURE, http://snomed.info/sct, 866148006, N/A"
+    },
+    {
+      "patient_id": "627c172c-e0ee-def6-c58f-52401f0a8a91",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-11-26, PROCEDURE, http://snomed.info/sct, 866148006, N/A (Mammography)"
+    },
+    {
+      "patient_id": "1a9b8ee5-794a-627e-4e78-315f1b3e9aff",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "19a4f3d0-d979-97f6-4ce6-9138e31acca4",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "d883b362-29db-02ff-b43a-7ad78a0b102e",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "9e510861-d428-d0a7-0ac2-241a1c61c1bc",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-02-22, PROCEDURE, http://snomed.info/sct, 473231009, N/A (Mammography)"
+    },
+    {
+      "patient_id": "dbe06a34-b508-e2aa-1069-43a415099914",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "2d50f0f3-4629-9a94-4697-e676d5317fd0",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "bfaab164-54c6-7fc2-306f-713260fdf74f",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-02-13, PROCEDURE, http://www.ada.org/cdt, D7140, N/A"
+    },
+    {
+      "patient_id": "a4fef572-df52-4f61-caf4-f4fb40e5060e",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "6916fc02-4203-1681-e53c-f2ce1f8e8259",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "3f446080-f7c4-5f4e-9e91-61d83e30d3a3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-01-22, Mammography (procedure) - 710824005"
+    },
+    {
+      "patient_id": "5ee39850-5413-4b08-e6f4-a67a33de62c3",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "OUTSIDE_WINDOW",
+      "llm_evidence": "2020-02-26, PROCEDURE, http://snomed.info/sct, 76601001, N/A"
+    },
+    {
+      "patient_id": "d7e571ba-4e4b-584c-9290-75bcb28922ac",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-01-30, PROCEDURE, http://snomed.info/sct, 52052004"
+    },
+    {
+      "patient_id": "59e0d26d-d75b-cc85-3bde-2879900f1874",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "29861589-e167-4c93-fbf7-6456f54b714e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2024-10-12, PROCEDURE, http://snomed.info/sct, 430193006"
+    },
+    {
+      "patient_id": "f1cee7d1-87ab-fa60-af68-d7d6d1a5d09b",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "9d73a00c-a400-66b3-8354-19ab81cc1e0a",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-06-29, Mammography (procedure) - 73761001"
+    },
+    {
+      "patient_id": "24da04d0-1863-369d-2902-1b233e4948ec",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "d35611d3-5192-7d0f-1e1b-d2f380c079fa",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "04c65321-5b7a-b6a6-f70c-3b5124ff0c45",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "b76a7561-53aa-3e5d-8a4d-19f7d71822e9",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "782876cc-09a3-50a9-22c9-a4cd38dc9f16",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "a659a6d7-beed-0fa1-8890-81561e44ceeb",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "a101d6c1-dc9b-ebda-fdd6-2ae837c57fcd",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "WRONG_CONCLUSION",
+      "llm_evidence": "2025-11-10, PROCEDURE, http://snomed.info/sct, 104435004, N/A (Mammography)"
+    },
+    {
+      "patient_id": "c062c185-d49a-7ccc-c577-d82c726499a1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "fbd40e44-16f3-49e2-435d-455d9e76719e",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    },
+    {
+      "patient_id": "29256d6d-032a-3120-7b48-e9824ce48290",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "None"
+    }
+  ]
+}

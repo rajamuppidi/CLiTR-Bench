@@ -33,13 +33,17 @@ EXPERIMENTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(_
 ANALYSIS_DIR    = os.path.dirname(os.path.abspath(__file__))
 
 MODELS = {
-    "qwen_zero_shot": {
-        "label": "Qwen 3 80B",
-        "file":  "results_CMS125_csv_zero_shot_base_qwen-qwen3-next-80b-a3b-instruct_20260226_011620.jsonl",
-    },
     "gpt4o_zero_shot": {
         "label": "GPT-4o",
-        "file":  "results_CMS125_csv_zero_shot_base_openai-gpt-4o_20260226_082257.jsonl",
+        "file":  "results_CMS125_csv_zero_shot_base_openai-gpt-4o_20260605_103217.jsonl",
+    },
+    "claude_zero_shot": {
+        "label": "Claude Sonnet 4.6",
+        "file":  "results_CMS125_csv_zero_shot_base_anthropic-claude-sonnet-4.6_20260605_113755.jsonl",
+    },
+    "llama_zero_shot": {
+        "label": "Llama 3.3 70B",
+        "file":  "results_CMS125_csv_zero_shot_base_meta-llama-llama-3.3-70b-instruct_20260605_154816.jsonl",
     },
 }
 
