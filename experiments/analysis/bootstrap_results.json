@@ -43,9 +43,9 @@
         "ci_upper": 53.0
       },
       "auditability": {
-        "observed": 50.8,
-        "ci_lower": 46.4,
-        "ci_upper": 55.0
+        "observed": 34.4,
+        "ci_lower": 30.2,
+        "ci_upper": 38.6
       }
     }
   },
@@ -93,9 +93,9 @@
         "ci_upper": 65.2
       },
       "auditability": {
-        "observed": 66.8,
-        "ci_lower": 62.6,
-        "ci_upper": 70.8
+        "observed": 65.4,
+        "ci_lower": 61.2,
+        "ci_upper": 69.4
       }
     }
   },
@@ -143,9 +143,9 @@
         "ci_upper": 55.91
       },
       "auditability": {
-        "observed": 70.4,
-        "ci_lower": 66.4,
-        "ci_upper": 74.4
+        "observed": 60.6,
+        "ci_lower": 56.2,
+        "ci_upper": 64.8
       }
     }
   }

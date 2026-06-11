@@ -57,22 +57,32 @@ def load_results(jsonl_path: str):
 
 
 def get_fields(r):
-    """Extract gold/pred numerator and auditability from a record."""
+    """Extract gold/pred numerator and auditability from a record.
+
+    Auditability definition matches metrics_engine.py:
+      - Gold non-compliant (no evidence): audit OK iff LLM cites nothing.
+      - Gold compliant (evidence exists): audit OK iff LLM cites the correct
+        date or code from the gold evidence record.
+    """
     gold_num = bool(r.get("gold_truth", {}).get("numerator", False))
     parsed   = r.get("llm_prediction", {}).get("parsed") or {}
     pred_num = bool(parsed.get("numerator_met", False))
 
-    # Auditability: LLM cited a non-null, non-'None' evidence
-    gold_ev   = r.get("gold_truth", {}).get("evidence")          # dict or None
-    llm_ev    = parsed.get("audit_evidence", "") or ""           # string or dict
-    llm_ev_s  = str(llm_ev).strip().lower()
+    gold_ev  = r.get("gold_truth", {}).get("evidence")       # dict or None
+    llm_ev_s = str(parsed.get("audit_evidence", "") or "").strip().lower()
+    null_vals = ("", "none", "null", "n/a", "false")
 
-    # If gold has no evidence (non-compliant) and LLM says None → auditability OK
     if gold_ev is None:
-        audit = (llm_ev_s in ("", "none", "null", "n/a"))
+        # Non-compliant patient: LLM must not fabricate evidence
+        audit = llm_ev_s in null_vals
     else:
-        # Gold has evidence → LLM must cite something meaningful (not None)
-        audit = llm_ev_s not in ("", "none", "null", "n/a")
+        # Compliant patient: LLM must cite the correct date or code
+        target_date = str(gold_ev.get("event_date", "")).lower()
+        target_code = str(gold_ev.get("code", "")).lower()
+        audit = bool(
+            (target_date and target_date in llm_ev_s) or
+            (target_code and target_code in llm_ev_s)
+        )
 
     return gold_num, pred_num, audit
 

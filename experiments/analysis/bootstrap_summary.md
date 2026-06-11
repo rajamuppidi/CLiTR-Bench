@@ -18,7 +18,7 @@ All publication-scale experiments (n=499–500 patients).
 | Precision | **34.67%** | 29.57% | 39.82% |
 | Recall | **76.19%** | 69.08% | 82.96% |
 | F1 | **47.66%** | 41.96% | 53.0% |
-| Auditability | **50.8%** | 46.4% | 55.0% |
+| Auditability | **34.4%** | 30.2% | 38.6% |
 
 ## Claude Sonnet 4.6 guideSupp (n=500)
 
@@ -36,7 +36,7 @@ All publication-scale experiments (n=499–500 patients).
 | Precision | **47.24%** | 41.06% | 53.33% |
 | Recall | **81.63%** | 75.18% | 87.76% |
 | F1 | **59.85%** | 53.98% | 65.2% |
-| Auditability | **66.8%** | 62.6% | 70.8% |
+| Auditability | **65.4%** | 61.2% | 69.4% |
 
 ## Llama 3.3 70B guideSupp (n=500)
 
@@ -54,5 +54,5 @@ All publication-scale experiments (n=499–500 patients).
 | Precision | **49.65%** | 41.45% | 57.86% |
 | Recall | **48.3%** | 40.3% | 56.52% |
 | F1 | **48.97%** | 41.77% | 55.91% |
-| Auditability | **70.4%** | 66.4% | 74.4% |
+| Auditability | **60.6%** | 56.2% | 64.8% |
 
