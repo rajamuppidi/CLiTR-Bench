@@ -35,7 +35,10 @@ __pycache__/
 data_generation/
 
 # Internal research documentation (project notes, PRD, status docs)
-documentation/
+# Exception: the guideline text supplied to models in the guideline-supplied
+# condition is a released benchmark artifact.
+documentation/*
+!documentation/02_gold_truth_engine_logic.md
 
 # Artifacts and scratch files
 artifacts/
