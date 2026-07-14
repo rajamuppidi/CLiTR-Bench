@@ -1,0 +1,72 @@
+{
+  "model": "GPT-4o (guideline)",
+  "n_total": 500,
+  "amr_pct": 98.4,
+  "evidence_grounding_rate_pct": 98.4,
+  "n_amr_failures": 8,
+  "error_type_counts": {
+    "NO_EVIDENCE_CITED": 8
+  },
+  "decision_breakdown": {
+    "false_positive_wrong_compliant_call": 0,
+    "false_negative_wrong_noncompliant_call": 8
+  },
+  "cases": [
+    {
+      "patient_id": "7bce1a05-0579-9d09-5f7a-a0ece30fe2b5",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "e41f48dc-40ac-b982-bfe7-019a5e5739df",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "8c68c90b-19e7-6a45-38ea-0f303ffe28b1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "d50b1fa4-c09b-de89-337a-fa78da3a6856",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "b3ea6b13-a0a1-dede-7f06-bb02906168b1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "c10b9550-9cf4-06ed-3af4-a5f99f41c9c6",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "cb73385b-3986-428a-a353-d1f9c3493bac",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "59e0d26d-d75b-cc85-3bde-2879900f1874",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    }
+  ]
+}

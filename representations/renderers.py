@@ -7,7 +7,10 @@ TARGET_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CANONICAL_DIR = os.path.join(TARGET_DIR, "data_generation", "output", "canonical")
 
 class RepresentationRenderer:
-    def __init__(self):
+    def __init__(self, index_date_str: str = "2025-12-31"):
+        # Events dated after the measurement index date are never shown to the model:
+        # they cannot count toward any measure and would leak post-index information.
+        self.index_date_str = index_date_str
         self._cache_patients = {}
         self._cache_encounters = {}
         self._cache_events = {}
@@ -98,15 +101,16 @@ class RepresentationRenderer:
             return "Patient not found."
             
         # Truncate longitudinal data for token limits (12K for Groq, higher for OpenAI)
-        # Use 4-year lookback to cover ALL HEDIS measure windows safely:
-        # - CMS125: 27-month mammography lookback (needs Oct 2021+)
+        # Use a lookback from 2020-01-01 to cover the HEDIS measure windows evaluated here:
+        # - CMS125: 27-month mammography window (needs Oct 2023+)
         # - CMS130: 10-year colonoscopy lookback (needs 2015+ but recent matters most)
         # - CMS165: Recent BP readings (1-2 years)
         # - CMS122: Recent HbA1c (1-2 years)
-        events = [e for e in events if e.get('event_date', '') >= '2020-01-01']
+        # Upper bound: never show post-index events (see __init__).
+        events = [e for e in events if '2020-01-01' <= e.get('event_date', '') <= self.index_date_str]
         if len(events) > 400:
             events = events[-400:]  # Keep most recent 400 events
-            
+
         if format_type == 'json':
             structured_doc = {
                 "patient_demographics": patient,
@@ -137,16 +141,11 @@ class RepresentationRenderer:
         if not patient:
             return "Patient not found."
             
-        # Truncate longitudinal data for token limits (12K for Groq, higher for OpenAI)
-        # Use 4-year lookback to cover ALL HEDIS measure windows safely:
-        # - CMS125: 27-month mammography lookback (needs Oct 2021+)
-        # - CMS130: 10-year colonoscopy lookback (needs 2015+ but recent matters most)
-        # - CMS165: Recent BP readings (1-2 years)
-        # - CMS122: Recent HbA1c (1-2 years)
-        events = [e for e in events if e.get('event_date', '') >= '2020-01-01']
+        # Same truncation rules as render_structured, including the post-index cutoff.
+        events = [e for e in events if '2020-01-01' <= e.get('event_date', '') <= self.index_date_str]
         if len(events) > 400:
             events = events[-400:]  # Keep most recent 400 events
-            
+
         note_sections = []
         note_sections.append(f"### CLINICAL SUMMARY NOTE ###")
         note_sections.append(f"PATIENT_ID: {patient['patient_id'][:8]}-XXX")

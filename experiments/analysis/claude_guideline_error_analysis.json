@@ -1,0 +1,227 @@
+{
+  "model": "Claude Sonnet 4.6 (guideline)",
+  "n_total": 500,
+  "amr_pct": 94.0,
+  "evidence_grounding_rate_pct": 94.0,
+  "n_amr_failures": 30,
+  "error_type_counts": {
+    "FABRICATED_EVENT": 21,
+    "NO_EVIDENCE_CITED": 9
+  },
+  "decision_breakdown": {
+    "false_positive_wrong_compliant_call": 19,
+    "false_negative_wrong_noncompliant_call": 9
+  },
+  "cases": [
+    {
+      "patient_id": "587ca872-8e02-803b-9887-4206c42b9a99",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "7bce1a05-0579-9d09-5f7a-a0ece30fe2b5",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "582bbd1a-37b6-d8a6-1236-85dd116a13b8",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-09-11: snomed 171207006 (mammography screening) \u2014 falls within the 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "e41f48dc-40ac-b982-bfe7-019a5e5739df",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "d5f6846a-52dd-fa2e-ed66-efee7f288f83",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-08-14: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "a3085ef6-469f-9d76-77ea-d98828e29f45",
+      "gold_numerator": false,
+      "llm_numerator": false,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "none \u2014 patient excluded due to combination of unilateral mastectomies: snomed 384709000 (right breast mastectomy) and snomed 70704007 (left breast mastectomy) recorded on 2024-11-05, satisfying the bilateral mastectomy exclusion criterion."
+    },
+    {
+      "patient_id": "580f876c-1091-a191-1dfe-ddc787f45a45",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-01-07: snomed 171207006 (mammography screening procedure) \u2014 within the 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "5ade3ee8-bc74-5552-9149-f92867ad32a2",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2024-03-26: snomed 171207006 (mammography screening) \u2014 falls within the 27-month lookback window (on or after october 1, 2023). additional qualifying mammograms also found on 2024-11-26 and 2025-04-01 with the same code."
+    },
+    {
+      "patient_id": "4ea90966-007d-3f7a-6903-17b722e98cd9",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-07-10: snomed 171207006 (mammography screening procedure) \u2014 within the 27-month lookback window (on or after october 1, 2023). also confirmed on 2024-07-04 with the same code."
+    },
+    {
+      "patient_id": "d4d83ba7-6b37-da8e-a8c3-e859d5f2a69b",
+      "gold_numerator": false,
+      "llm_numerator": false,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "none. patient has no qualifying encounters during the 2025 measurement year (all clinical events are dated 2026-01-19 through 2026-02-12), failing the visit requirement for the initial population. additionally, no mammography procedure codes (loinc 24606-6, snomed 71651007, or cpt 77061-77067) were found within the 27-month lookback window (october 1, 2023 \u2013 december 31, 2025)."
+    },
+    {
+      "patient_id": "77890baf-4cb5-70cc-3bd3-f9fa3b1ee009",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2023-12-03: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after october 1, 2023). additional qualifying mammograms also found on 2024-12-08 and 2025-12-13 with the same code."
+    },
+    {
+      "patient_id": "12a469b0-e681-3ec9-2c5f-c30a078adf39",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-09-14: snomed 171207006 (mammography screening procedure) \u2014 within the valid 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "69515561-e635-3187-c845-5821e72c2f73",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-05-04: snomed 171207006 (mammography screening) \u2014 falls within the 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "2e5488d1-0fa9-dc68-a4e0-fe2addb2dc5d",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-02-09: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after october 1, 2023). also confirmed on 2024-02-04 with the same code."
+    },
+    {
+      "patient_id": "d50b1fa4-c09b-de89-337a-fa78da3a6856",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "b3ea6b13-a0a1-dede-7f06-bb02906168b1",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "ea41bb95-f2da-11dc-21d0-ae3f4afc2c9b",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-10-05, procedure, snomed 52052004 (mammography) \u2014 falls within the 27-month lookback window (on or after october 1, 2023 through december 31, 2025)."
+    },
+    {
+      "patient_id": "7f9473cf-90dc-5059-b315-ecc66bf2a7e8",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-02-07: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after 2023-10-01). confirmed again on 2025-12-26: snomed 171207006."
+    },
+    {
+      "patient_id": "c10b9550-9cf4-06ed-3af4-a5f99f41c9c6",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "cb73385b-3986-428a-a353-d1f9c3493bac",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "8ec711cd-21f0-31de-c11b-8a8d4c90f7af",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "db474452-1c05-8f9d-0bc4-4235e4fb7c56",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2024-01-26: snomed 52052004 (mammography) \u2014 within the 27-month lookback window (on or after october 1, 2023). additional mammography procedures also documented on 2024-03-03, 2025-05-07, 2025-09-12, 2025-10-12, 2025-11-11, and 2025-12-11."
+    },
+    {
+      "patient_id": "9301d728-0d23-b48b-09d3-7532951d3b40",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-06-25: snomed 171207006 (screening mammography) \u2014 within the valid 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "4cb3174f-5ab7-fb18-bddb-6df16577764e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-12-25: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after 2023-10-01). additional qualifying mammograms also found on 2024-12-19 and 2023-12-15."
+    },
+    {
+      "patient_id": "ba4879cf-f417-64bd-61cd-49180903ea8e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2024-10-03: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after october 1, 2023)"
+    },
+    {
+      "patient_id": "7cf9f491-1626-da3a-a275-c43b1e7643ac",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2024-03-14: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after october 1, 2023). additionally confirmed by 2025-03-20: snomed 171207006 (mammography screening) during the measurement year."
+    },
+    {
+      "patient_id": "59e0d26d-d75b-cc85-3bde-2879900f1874",
+      "gold_numerator": true,
+      "llm_numerator": false,
+      "error_type": "NO_EVIDENCE_CITED",
+      "llm_evidence": "none"
+    },
+    {
+      "patient_id": "b3a6d730-5dee-165c-bfb4-0184d0f9e47e",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-04-28: snomed 171207006 (mammography screening procedure) \u2014 also confirmed on 2024-04-22: snomed 171207006 (mammography screening procedure). both dates fall within the required 27-month lookback window (on or after october 1, 2023)."
+    },
+    {
+      "patient_id": "3ff166bb-6f66-cce3-d64e-714c84b0cece",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2025-08-15: snomed 171207006 (mammography screening) \u2014 within the 27-month lookback window (on or after 2023-10-01). also confirmed by 2024-08-09: snomed 171207006 (mammography screening)."
+    },
+    {
+      "patient_id": "a101d6c1-dc9b-ebda-fdd6-2ae837c57fcd",
+      "gold_numerator": false,
+      "llm_numerator": true,
+      "error_type": "FABRICATED_EVENT",
+      "llm_evidence": "2023-11-21: snomed 171207006 (mammography/screening mammography) \u2014 within the 27-month lookback window (on or after october 1, 2023). additionally confirmed on 2025-12-02: snomed 171207006 (mammography/screening mammography) during the measurement year."
+    }
+  ]
+}

@@ -111,6 +111,8 @@ def mcnemar_test(results_a, results_b, label_a, label_b):
     significance = "p < 0.001" if p_value < 0.001 else (
         "p < 0.01" if p_value < 0.01 else (
         "p < 0.05" if p_value < 0.05 else "not significant"))
+    # Family-wise correction across the eight planned comparisons (0.05 / 8).
+    bonferroni_threshold = 0.05 / len(COMPARISONS)
 
     return {
         "shared_patients": len(shared_pids),
@@ -121,6 +123,8 @@ def mcnemar_test(results_a, results_b, label_a, label_b):
         "chi2_stat": round(chi2_stat, 4),
         "p_value": round(p_value, 6),
         "significance": significance,
+        "bonferroni_threshold": bonferroni_threshold,
+        "bonferroni_significant": bool(p_value < bonferroni_threshold),
         "winner": winner,
     }
 

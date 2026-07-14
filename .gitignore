@@ -9,8 +9,11 @@
 ../walkthrough.md
 ../walkthrough.md.resolved
 
-# Manuscript draft — under review, not yet published
+# Manuscript drafts — under review, not yet published
 manuscript/
+JAMIA/
+JAIR_Manuscript/
+JBI/
 
 # ── Python ─────────────────────────────────────────────────────────────────────
 # Byte-compiled / optimized / DLL files
@@ -64,7 +67,6 @@ env/
 *.swo
 
 # Unused experiments & cohorts
-evaluation/
 experiments/build_cms165_cohort.py
 experiments/cohort_2025_cms125.txt
 experiments/cohort_2025_cms165.txt

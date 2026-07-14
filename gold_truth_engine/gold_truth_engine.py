@@ -107,12 +107,15 @@ class GoldTruthEngine:
             
         if not result['exclusion']: result['denominator'] = True
         if result['denominator']:
-            lookback_days = 821  # 27 months prior (Oct 1 two years prior → end of measurement period)
+            # CMS125v13/HEDIS BCS-E window: October 1 two years prior to the measurement
+            # period through the end of the measurement period. Calendar-date logic, not a
+            # day count — a fixed day count drifts across leap years.
+            window_start = date(self.index_date.year - 2, 10, 1)
             valid_mammos = []
             for ev in events:
                 if ev['code'] in map_bcs["Mammography_CODES"]:
-                    days_diff = (self.index_date - parse_date(ev['event_date'])).days
-                    if 0 <= days_diff <= lookback_days:
+                    edate = parse_date(ev['event_date'])
+                    if window_start <= edate <= self.index_date:
                         valid_mammos.append(ev)
             if valid_mammos:
                 valid_mammos.sort(key=lambda x: parse_date(x['event_date']), reverse=True)

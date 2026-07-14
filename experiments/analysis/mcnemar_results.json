@@ -8,6 +8,8 @@
     "chi2_stat": 16.4091,
     "p_value": 5.1e-05,
     "significance": "p < 0.001",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "GPT-4o (guideline)"
   },
   "GPT-4o (guideline) vs Llama 3.3 70B (guideline)": {
@@ -19,6 +21,8 @@
     "chi2_stat": 39.2,
     "p_value": 0.0,
     "significance": "p < 0.001",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "GPT-4o (guideline)"
   },
   "Claude Sonnet 4.6 (guideline) vs Llama 3.3 70B (guideline)": {
@@ -30,6 +34,8 @@
     "chi2_stat": 8.4912,
     "p_value": 0.003569,
     "significance": "p < 0.01",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "Claude Sonnet 4.6 (guideline)"
   },
   "GPT-4o (guideline) vs GPT-4o (zero-shot)": {
@@ -41,6 +47,8 @@
     "chi2_stat": 226.4879,
     "p_value": 0.0,
     "significance": "p < 0.001",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "GPT-4o (guideline)"
   },
   "Claude Sonnet 4.6 (guideline) vs Claude Sonnet 4.6 (zero-shot)": {
@@ -52,6 +60,8 @@
     "chi2_stat": 112.4129,
     "p_value": 0.0,
     "significance": "p < 0.001",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "Claude Sonnet 4.6 (guideline)"
   },
   "Llama 3.3 70B (guideline) vs Llama 3.3 70B (zero-shot)": {
@@ -63,6 +73,8 @@
     "chi2_stat": 68.2667,
     "p_value": 0.0,
     "significance": "p < 0.001",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "Llama 3.3 70B (guideline)"
   },
   "Claude Sonnet 4.6 (zero-shot) vs GPT-4o (zero-shot)": {
@@ -74,6 +86,8 @@
     "chi2_stat": 29.278,
     "p_value": 0.0,
     "significance": "p < 0.001",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": true,
     "winner": "Claude Sonnet 4.6 (zero-shot)"
   },
   "Claude Sonnet 4.6 (zero-shot) vs Llama 3.3 70B (zero-shot)": {
@@ -85,6 +99,8 @@
     "chi2_stat": 0.6575,
     "p_value": 0.417432,
     "significance": "not significant",
+    "bonferroni_threshold": 0.00625,
+    "bonferroni_significant": false,
     "winner": "Llama 3.3 70B (zero-shot)"
   }
 }
